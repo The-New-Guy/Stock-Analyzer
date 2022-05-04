@@ -3,11 +3,27 @@ version: '3.8'
 services:
     backend:
         build: server
+        image: newguy/stock-analyzer_backend
         ports:
-            - "8080:8080"
+            - "5000:5000"
+        # restart: always
+        # volumes:
+        #     - ./server:/code
+        deploy:
+            resources:
+                limits:
+                    cpus: '2'
+                    memory: 4G
+
     frontend:
         build: client
+        image: newguy/stock-analyzer_frontend
         ports:
             - "80:80"
         depends_on:
-          - backend
+            - backend
+        deploy:
+            resources:
+                limits:
+                    cpus: '2'
+                    memory: 4G

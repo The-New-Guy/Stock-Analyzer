@@ -3,9 +3,10 @@ flask_cors
 pandas
 numpy
 yfinance
-pystan
-statsmodels
-prophet
 pmdarima
 black
 flake8
+statsmodels
+plotly
+pystan
+prophet
