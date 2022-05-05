@@ -1,0 +1,5 @@
+{
+    "APP_NAME": "stock-analyzer",
+    "REGION": "eastus",
+    "ENVIRONMENT": "production"
+}

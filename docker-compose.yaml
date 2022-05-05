@@ -2,8 +2,10 @@
 version: '3.8'
 services:
     backend:
-        build: server
+        build:
+            context: ./server
         image: newguy/stock-analyzer_backend
+        domainname: stock-analyzer
         ports:
             - "5000:5000"
         # restart: always
@@ -16,8 +18,10 @@ services:
                     memory: 4G
 
     frontend:
-        build: client
+        build:
+            context: ./client
         image: newguy/stock-analyzer_frontend
+        domainname: stock-analyzer
         ports:
             - "80:80"
         depends_on:
@@ -25,5 +29,5 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: '2'
+                    cpus: '1'
                     memory: 4G

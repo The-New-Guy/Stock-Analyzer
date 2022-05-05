@@ -1,12 +1,17 @@
 import axios from 'axios';
 import moment from 'moment-timezone';
+import Config from '../../config.json';
 
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 
 class PlotData {
+  BASE_URL = (Config.ENVIRONMENT === 'production')
+    ? `http://${Config.APP_NAME}.${Config.REGION}.azurecontainer.io:5000/v1/client`
+    : 'http://localhost:5000/v1/client';
+
   client = axios.create({
-    baseURL: 'http://localhost:5000/v1/client',
+    baseURL: this.BASE_URL,
     timeout: 60000,
   });
 
