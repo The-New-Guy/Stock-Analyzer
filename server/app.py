@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+import os
 from pyparsing import line
 from yfinance import Ticker
 import pandas as pd
@@ -129,5 +130,7 @@ def get_data():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
-    # app.run(debug=True, host='0.0.0.0', port=5000)
+    if os.getenv('ENVIRONMENT') == 'production':
+        app.run(host='0.0.0.0', port=5000)
+    else:
+        app.run(debug=True, host='0.0.0.0', port=5000)
